@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Box Animation</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Box container design */
+
+      .boxContainer {
+        display: flex;
+        align-items: flex-end;
+        margin-top: 55px;
+        border: 10px solid black;
+        width: 50%;
+        height: 246px;
+        background: black;
+      }
+
+      /* Box design */
+
+      .box {
+        width: 200px;
+        height: 225px;
+        transition: height 0.7s linear;
+      }
+      .blueBox {
+        background: #6666ff;
+      }
+      .megentaBox {
+        background: #cc33ff;
+      }
+      .purpleBox {
+        background: #ff3399;
+      }
+      .pinkBox {
+        background: pink;
+      }
+      .yellowBox {
+        background: #ffff80;
+      }
+
+      /* start stop button  */
+
+      .buttonContainer {
+        display: flex;
+        width: 500px;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .btn {
+        margin: 45px 10px;
+        width: 80px;
+        height: 30px;
+        font-size: 20px;
+        font-weight: 600;
+        border: none;
+        border-radius: 10px;
+        transition: all 0.2s linear;
+      }
+      .start {
+        background: rgb(50, 214, 50);
+      }
+      .stop {
+        background: rgb(233, 53, 53);
+      }
+      .start:hover {
+        cursor: pointer;
+        background: green;
+      }
+      .stop:hover {
+        cursor: pointer;
+        background: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="boxContainer">
+      <div class="box blueBox"></div>
+
+      <div class="box megentaBox"></div>
+      <div class="box purpleBox"></div>
+      <div class="box pinkBox"></div>
+      <div class="box yellowBox"></div>
+    </div>
+    <div class="buttonContainer">
+      <button class="btn start">start</button>
+      <button class="btn stop">stop</button>
+    </div>
+  </body>
+  <script>
+    let start = document.querySelector(".start");
+    let stop = document.querySelector(".stop");
+    let blueBox = document.querySelector(".blueBox");
+    let megentaBox = document.querySelector(".megentaBox");
+    let purpleBox = document.querySelector(".purpleBox");
+    let pinkBox = document.querySelector(".pinkBox");
+    let yellowBox = document.querySelector(".yellowBox");
+
+    const colorArr = [blueBox, megentaBox, purpleBox, pinkBox, yellowBox];
+
+    // addEvent listners
+
+    start.addEventListener("click", () => {
+      start.style.border = "2px solid blue";
+      stop.style.border = "none";
+      let interval = setInterval(() => randomHeight(), 1000);
+
+      stop.addEventListener("click", () => {
+        stop.style.border = "2px solid blue";
+        start.style.border = "none";
+        clearInterval(interval);
+      });
+    });
+
+    // box height change
+
+    function randomHeight() {
+      colorArr.map((color) => {
+        let height = Math.floor(Math.random() * 224);
+        color.style.height = height + "px";
+      });
+    }
+  </script>
+</html>
