@@ -8,7 +8,7 @@
 
 ## Live URL :-
 
-> [Box Animatio](https://alam751.github.io/zeeshan.html)
+> [Box Animation](https://alam751.github.io/zeeshan.html)
 
 ## Technologies Used
 
